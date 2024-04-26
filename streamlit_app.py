@@ -45,6 +45,7 @@ import pafy #for uploading youtube videos
 import plotly.express as px #to create visualisations at the admin session
 import nltk
 nltk.download('stopwords')
+nltk.data.path.append("/path/to/nltk_data")
 
 
 def fetch_yt_video(link):
