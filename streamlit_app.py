@@ -1,33 +1,33 @@
 import streamlit as st
+import nltk
+import spacy
+nltk.download('stopwords')
+spacy.load('en_core_web_sm')
+
 import pandas as pd
-import base64,random
-import time,datetime
-#libraries to parse the resume pdf files
+import base64, random
+import time, datetime
 from pyresparser import ResumeParser
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
 from pdfminer3.pdfinterp import PDFResourceManager
 from pdfminer3.pdfinterp import PDFPageInterpreter
 from pdfminer3.converter import TextConverter
-import io,random
+import io, random
 from streamlit_tags import st_tags
 from PIL import Image
 import pymysql
-from Courses import ds_course,web_course,android_course,ios_course,uiux_course,resume_videos,interview_videos
-import nltk
-nltk.download('stopwords')
-import pafy #for uploading youtube videos
-import plotly.express as px #to create visualisations at the admin session
-import nltk
-nltk.download('stopwords')
-nltk.data.path.append("/path/to/nltk_data")
-
+from Courses import ds_course, web_course, android_course, ios_course, uiux_course, resume_videos, interview_videos
+import pafy
+import plotly.express as px
+import youtube_dl
 
 def fetch_yt_video(link):
     video = pafy.new(link)
     return video.title
 
-def get_table_download_link(df,filename,text):
+
+def get_table_download_link(df, filename, text):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     in:  dataframe
     out: href string
